@@ -4,7 +4,7 @@ Donate Link: http://krogsgard.com/donate/
 Tags: series, really simple series, post series, simple post series
 Tested up to: 3.4.1
 Requires at least: 3.4
-Stable Tag: 0.1
+Stable Tag: 0.2
 License: GPLv2 or later
 
 Really Simple Series allows you to turn normal blog categories into their own post series.
