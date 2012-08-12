@@ -3,7 +3,7 @@
 Plugin Name: Really Simple Series
 Plugin URI: http://krogsgard.com/2012/simple-wordpress-series-plugin
 Description: This plugin changes the default order of selected categories used to ascending (oldest first). It also lists all posts in the selected categories at the bottom of each post in the series.
-Version: 0.1
+Version: 0.2
 Author: Brian Krogsgard & Pippin Williamson
 Author URI: http://krogsgard.com
 Contributors: krogsgard, mordauk
@@ -141,17 +141,17 @@ class RSSeries {
 		
 		$rsseriesquery = new WP_Query( $args );
 				
-		$listseries = '<div class="really-simple-series">' . apply_filters( 'rsseries_title', '<h5>' . __('View all posts in this series') . '</h5>' );
+		$listseries = '<div class="really-simple-series">' . apply_filters( 'rsseries_title', '<h5>' . __( 'View all posts in this series', 'really-simple-series' ) . '</h5>' );
 	
 			$listseries .= apply_filters( 'rsseries_before_series', '' );
 			
 			$listseries .= '<ul>';
 			
-			while($rsseriesquery->have_posts()) : $rsseriesquery->the_post();
+			while( $rsseriesquery->have_posts() ) : $rsseriesquery->the_post();
 			
 				$listseries .= '<li  class="really-simple" id="post-' . get_the_ID() . '">';
 					
-					$listseries .= apply_filters( 'rsseries_content', '<a href="' . get_permalink() . '">' . get_the_title()  . '</a>' . the_date('', '<span> - ', '</span>', false) );
+					$listseries .= apply_filters( 'rsseries_content', '<a href="' . get_permalink() . '">' . get_the_title()  . '</a>' . the_date( '', '<span>' . __( ' - ', 'really-simple-series' ), '</span>', false) );
 				
 				$listseries .= '</li>';		
 			
@@ -228,9 +228,9 @@ class RSSeries {
 			<h2><?php _e( 'Really Simple Series' ); ?></h2>
 			<tbody>
 				<tr class="form-field">
-				<th scope="row" valign="top"><label for="rsseries_check"><?php _e('Enable Really Simple Series'); ?></label></th>
+				<th scope="row" valign="top"><label for="rsseries_check"><?php _e( 'Enable Really Simple Series', 'really-simple-series' ); ?></label></th>
 					<td>
-						<label for="rsseries_check"><?php _e( 'Check the box to enable Really Simple Series' ); ?></label>
+						<label for="rsseries_check"><?php _e( 'Check the box to enable Really Simple Series', 'really-simple-series' ); ?></label>
 
 						<input type="checkbox" id="category_meta[rsseries_check]" name="category_meta[rsseries_check]" <?php checked( true, isset( $category_meta['rsseries_check'] ) ? true : false ) ?> />
 						
